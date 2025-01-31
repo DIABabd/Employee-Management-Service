@@ -10,16 +10,24 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
+      <th>LAST NAME</th>
+      <th>FIRST NAME</th>
+      <th>STREET</th>
+      <th>POSTCODE</th>
+      <th>CITY</th>
+      <th>PHONE</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr *ngFor="let employee of employees$ | async">
       <td>{{ employee.id }}</td>
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.email }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.street }}</td>
+      <td>{{ employee.postcode }}</td>
+      <td>{{ employee.city }}</td>
+      <td>{{ employee.phone }}</td>
       <td>
         <button class="action-btn">View</button>
         <button class="action-btn">Edit</button>

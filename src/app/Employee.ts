@@ -1,10 +1,16 @@
-export class Employee {
-  constructor(public id?: number,
-              public lastName?: string,
-              public firstName?: string,
-              public street?: string,
-              public postcode?: string,
-              public city?: string,
-              public phone?: string) {
-  }
+// Employee.ts
+export interface Employee {
+  id?: number;
+  lastName: string;
+  firstName: string;
+  street: string;
+  postcode: string;  // Must be exactly 5 characters
+  city: string;
+  phone: string;
+  skillSet?: Qualification[];  // Array of qualifications
+}
+
+export interface Qualification {
+  id?: number;
+  skill: string;
 }
