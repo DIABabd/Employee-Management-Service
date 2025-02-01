@@ -1,38 +1,37 @@
-<div class="employee-list">
-  <div class="list-header">
-    <app-search-bar-component (search)="onSearch($event)"></app-search-bar-component>
-    <button routerLink="/dashboard/employees/create" class="new-employee-btn">
-      + New Employee
-    </button>
-  </div>
+  <div class="employee-list">
+    <div class="list-header">
+      <app-search-bar-component (search)="onSearch($event)"></app-search-bar-component>
+      <button routerLink="/dashboard/employees/create" class="new-employee-btn">
+        + New Employee
+      </button>
+    </div>
 
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>LAST NAME</th>
-      <th>FIRST NAME</th>
-      <th>STREET</th>
-      <th>POSTCODE</th>
-      <th>CITY</th>
-      <th>PHONE</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let employee of employees$ | async">
-      <td>{{ employee.id }}</td>
-      <td>{{ employee.lastName }}</td>
-      <td>{{ employee.firstName }}</td>
-      <td>{{ employee.street }}</td>
-      <td>{{ employee.postcode }}</td>
-      <td>{{ employee.city }}</td>
-      <td>{{ employee.phone }}</td>
-      <td>
-        <button class="action-btn">View</button>
-        <button class="action-btn">Edit</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>LAST NAME</th>
+        <th>FIRST NAME</th>
+        <th>STREET</th>
+        <th>POSTCODE</th>
+        <th>CITY</th>
+        <th>PHONE</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees$ | async">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.street }}</td>
+        <td>{{ employee.postcode }}</td>
+        <td>{{ employee.city }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>
+          <button [routerLink]="['/dashboard/employees', employee.id]" class="action-btn">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

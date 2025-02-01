@@ -1,1 +1,59 @@
-<p>employee-detail-component works!</p>
+<div class="employee-detail-container">
+  <h2>Employee Details</h2>
+
+  <form *ngIf="employee" [formGroup]="editForm" (ngSubmit)="updateEmployee()">
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input type="text" formControlName="lastName">
+    </div>
+
+    <div class="form-group">
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+    </div>
+
+    <div class="form-group">
+      <label>Street:</label>
+      <input type="text" formControlName="street">
+    </div>
+
+    <div class="form-group">
+      <label>Postcode:</label>
+      <input type="text" formControlName="postcode" maxlength="5">
+      <div class="error" *ngIf="editForm.get('postcode')?.hasError('pattern')">
+        Must be 5 digits
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>City:</label>
+      <input type="text" formControlName="city">
+    </div>
+
+    <div class="form-group">
+      <label>Phone:</label>
+      <input type="tel" formControlName="phone">
+    </div>
+
+    <div class="qualifications-section">
+      <h3>Qualifications</h3>
+      <div class="qualification-item" *ngFor="let qual of employee.skillSet">
+        {{ qual.skill }}
+        <button type="button" class="remove-btn" (click)="removeQualification(qual.id!)">×</button>
+      </div>
+
+      <div class="add-qualification">
+        <select [(ngModel)]="selectedQualification" [ngModelOptions]="{standalone: true}">
+          <option [value]="null">Select Qualification</option>
+          <option *ngFor="let q of qualifications" [value]="q.id">{{ q.skill }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" routerLink="/dashboard/employees">Cancel</button>
+      <button type="submit" [disabled]="!editForm.valid" class="save-btn">Save Changes</button>
+      <button type="button" class="delete-btn" (click)="deleteEmployee()">Delete Employee</button>
+    </div>
+  </form>
+</div>

@@ -24,7 +24,23 @@ export class EmployeeService {
     return this.http.post<Employee>(this.apiUrl, employee);
   }
 
-  // Add qualification to employee
+
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl, employee);
+  }
+
+  getEmployee(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/${id}`);
+  }
+
+  updateEmployee(id: number, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(`${this.apiUrl}/${id}`, employee);
+  }
+
+  deleteEmployee(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
   addQualification(employeeId: number, qualificationId: number): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/${employeeId}/qualifications`,
@@ -32,7 +48,10 @@ export class EmployeeService {
     );
   }
 
-  createEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.apiUrl, employee);
+  removeQualification(employeeId: number, qualificationId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiUrl}/${employeeId}/qualifications/${qualificationId}`
+    );
   }
+
 }

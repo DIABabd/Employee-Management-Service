@@ -25,7 +25,8 @@ export const routes: Routes = [
       { path: 'employees/:id', component: EmployeeDetailComponent },
       { path: 'qualifications', component: QualificationListComponent },
       { path: 'qualifications/create', component: CreateQualificationComponent },
-      { path: '', redirectTo: 'employees', pathMatch: 'full' }
+      { path: '', redirectTo: 'employees', pathMatch: 'full' },
+      { path: 'employees/:id', component: EmployeeDetailComponent }
     ]
   },
   {
