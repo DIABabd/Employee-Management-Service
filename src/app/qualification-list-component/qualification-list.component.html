@@ -1,1 +1,28 @@
-<p>qualification-list-component works!</p>
+<div class="qualification-list-container">
+  <div class="header">
+    <h2>Qualifications</h2>
+    <button routerLink="/dashboard/qualifications/create" class="add-button">
+      + Add New Qualification
+    </button>
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Skill Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let qualification of qualifications$ | async">
+      <td>{{ qualification.id }}</td>
+      <td>{{ qualification.skill }}</td>
+      <td>
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

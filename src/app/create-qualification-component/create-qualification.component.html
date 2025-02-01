@@ -1,1 +1,29 @@
-<p>create-qualification-component works!</p>
+<div class="qualification-form-container">
+  <h2>Create New Qualification</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="skill">Skill Name:</label>
+      <input
+        type="text"
+        id="skill"
+        formControlName="skill"
+        placeholder="Enter skill name (e.g., Angular, Java)"
+      >
+      <div class="error-message" *ngIf="form.get('skill')?.hasError('required') && form.get('skill')?.touched">
+        Skill name is required
+      </div>
+      <div class="error-message" *ngIf="form.get('skill')?.hasError('minlength')">
+        Minimum 3 characters required
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" routerLink="/dashboard/qualifications">
+        Cancel
+      </button>
+      <button type="submit" [disabled]="!form.valid" class="submit-btn">
+        Create Qualification
+      </button>
+    </div>
+  </form>
+</div>

@@ -15,7 +15,7 @@ export class QualificationService {
   }
 
   // Create qualification
-  create(skill: string): Observable<Qualification> {
-    return this.http.post<Qualification>(this.apiUrl, { skill });
+  createQualification(qualification: { skill: string }): Observable<Qualification> {
+    return this.http.post<Qualification>(this.apiUrl, qualification);
   }
 }
