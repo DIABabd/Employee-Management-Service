@@ -37,7 +37,7 @@
 
     <div class="qualifications-section">
       <h3>Qualifications</h3>
-      <div class="qualification-item" *ngFor="let qual of employee.skillSet">
+      <div class="qualification-item" *ngFor="let qual of skillSet">
         {{ qual.skill }}
         <button type="button" class="remove-btn" (click)="removeQualification(qual.id!)">×</button>
       </div>
@@ -47,7 +47,9 @@
           <option [value]="null">Select Qualification</option>
           <option *ngFor="let q of qualifications" [value]="q.id">{{ q.skill }}</option>
         </select>
+        <button type="button" (click)="assignQualification()">Add</button>
       </div>
+
     </div>
 
     <div class="form-actions">

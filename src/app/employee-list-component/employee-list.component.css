@@ -37,3 +37,18 @@ th {
   border-radius: 3px;
   cursor: pointer;
 }
+
+
+.qualifications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.qualification-tag {
+  background-color: #3498db;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}

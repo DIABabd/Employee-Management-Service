@@ -34,3 +34,30 @@ button[type="submit"] {
   background-color: #3498db;
   color: white;
 }
+
+.qualification-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.no-qualifications {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}

@@ -16,6 +16,7 @@
         <th>POSTCODE</th>
         <th>CITY</th>
         <th>PHONE</th>
+        <th>Qualifications</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -28,6 +29,14 @@
         <td>{{ employee.postcode }}</td>
         <td>{{ employee.city }}</td>
         <td>{{ employee.phone }}</td>
+        <td>
+              <div class="qualifications-list">
+        <span *ngFor="let qual of employee.skillSet" class="qualification-tag">
+          {{ qual.skill }}
+        </span>
+                <span *ngIf="!employee.skillSet?.length">-</span>
+              </div>
+        </td>
         <td>
           <button [routerLink]="['/dashboard/employees', employee.id]" class="action-btn">Edit</button>
         </td>

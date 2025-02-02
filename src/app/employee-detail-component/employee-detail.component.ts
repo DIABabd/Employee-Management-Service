@@ -21,6 +21,8 @@ export class EmployeeDetailComponent implements OnInit {
   qualifications: Qualification[] = [];
   editForm: FormGroup;
   selectedQualification: number | null = null;
+  skillSet: Qualification[] = [];
+  availableQualifications: Qualification[] = [];
 
   constructor(
     private employeeService: EmployeeService,
@@ -51,6 +53,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.employeeService.getEmployee(id).subscribe({
       next: (employee) => {
         this.employee = employee;
+        this.skillSet = employee.skillSet ? [...employee.skillSet] : []; // Clone the array or use an empty array
         this.editForm.patchValue(employee);
       },
       error: (err) => console.error('Error loading employee:', err)
@@ -88,8 +91,15 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.selectedQualification) {
       this.employeeService.addQualification(this.employee.id!, this.selectedQualification)
         .subscribe({
-          next: () => this.loadEmployee(this.employee.id!),
-          error: (err) => console.error('Error assigning qualification:', err)
+          next: () => {
+            // Add to local array instead of reloading
+            const qual = this.qualifications.find(q => q.id === this.selectedQualification);
+            if (qual) {
+              this.skillSet.push(qual);
+              this.selectedQualification = null;
+            }
+          },
+          error: (err) => console.error('Error:', err)
         });
     }
   }
@@ -97,8 +107,11 @@ export class EmployeeDetailComponent implements OnInit {
   removeQualification(qualificationId: number): void {
     this.employeeService.removeQualification(this.employee.id!, qualificationId)
       .subscribe({
-        next: () => this.loadEmployee(this.employee.id!),
-        error: (err) => console.error('Error removing qualification:', err)
+        next: () => {
+          // Remove from local array
+          this.skillSet = this.skillSet.filter(q => q.id !== qualificationId);
+        },
+        error: (err) => console.error('Error:', err)
       });
   }
 }

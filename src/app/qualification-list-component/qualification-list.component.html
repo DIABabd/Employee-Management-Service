@@ -1,9 +1,12 @@
 <div class="qualification-list-container">
   <div class="header">
     <h2>Qualifications</h2>
-    <button routerLink="/dashboard/qualifications/create" class="add-button">
-      + Add New Qualification
-    </button>
+    <div class="search-add-container">
+      <app-search-bar-component (search)="onSearch($event)"></app-search-bar-component>
+      <button routerLink="/dashboard/qualifications/create" class="add-button">
+        + Add New Qualification
+      </button>
+    </div>
   </div>
 
   <table>
@@ -19,8 +22,7 @@
       <td>{{ qualification.id }}</td>
       <td>{{ qualification.skill }}</td>
       <td>
-        <button class="edit-btn">Edit</button>
-        <button class="delete-btn">Delete</button>
+      <button class="delete-btn" (click)="deleteQualification(qualification.id)">Delete</button>
       </td>
     </tr>
     </tbody>

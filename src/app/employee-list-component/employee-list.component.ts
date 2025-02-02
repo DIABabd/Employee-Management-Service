@@ -31,14 +31,17 @@ export class EmployeeListComponent {
     });
   }
 
-  onSearch(searchTerm: string) {
-    this.searchTerm = searchTerm.toLowerCase();
-    this.employees$ = this.fetchData().pipe(
-      map(employees => employees.filter((employee: Employee) =>
-        (employee.lastName?.toLowerCase().includes(this.searchTerm)) ||
-        (employee.firstName?.toLowerCase().includes(this.searchTerm)) ||
-        (employee.city?.toLowerCase().includes(this.searchTerm))
-      ))
-    );
-  }
+  // employee-list.component.ts
+    onSearch(searchTerm: string) {
+      this.searchTerm = searchTerm.toLowerCase();
+      this.employees$ = this.employeeService.getAllEmployees().pipe(
+        map(employees => employees.filter(employee =>
+          employee.lastName?.toLowerCase().includes(this.searchTerm) ||
+          employee.firstName?.toLowerCase().includes(this.searchTerm) ||
+          employee.city?.toLowerCase().includes(this.searchTerm) ||
+          employee.postcode?.includes(this.searchTerm) ||
+          employee.skillSet?.some(q => q.skill.toLowerCase().includes(this.searchTerm))
+        ))
+      );
+    }
 }

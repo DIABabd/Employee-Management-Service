@@ -16,7 +16,7 @@ export class EmployeeService {
 
   // Add this method
   getAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
+    return this.http.get<Employee[]>(`${this.apiUrl}?expand=skillSet`);
   }
 
   // Create employee
@@ -26,7 +26,10 @@ export class EmployeeService {
 
 
   createEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.apiUrl, employee);
+    return this.http.post<Employee>(this.apiUrl, {
+      ...employee,
+      skillSet: employee.skillSet || [] // Ensure array exists
+    });
   }
 
   getEmployee(id: number): Observable<Employee> {
@@ -44,7 +47,7 @@ export class EmployeeService {
   addQualification(employeeId: number, qualificationId: number): Observable<void> {
     return this.http.post<void>(
       `${this.apiUrl}/${employeeId}/qualifications`,
-      { qualificationId }
+      { qualificationId }  // Match API expectation
     );
   }
 
@@ -53,5 +56,4 @@ export class EmployeeService {
       `${this.apiUrl}/${employeeId}/qualifications/${qualificationId}`
     );
   }
-
 }

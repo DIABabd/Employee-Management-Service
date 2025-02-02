@@ -116,3 +116,15 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.add-qualification {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.add-qualification button {
+  background-color: #27ae60;
+  color: white;
+  padding: 8px 15px;
+}

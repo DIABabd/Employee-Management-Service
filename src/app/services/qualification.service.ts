@@ -18,4 +18,8 @@ export class QualificationService {
   createQualification(qualification: { skill: string }): Observable<Qualification> {
     return this.http.post<Qualification>(this.apiUrl, qualification);
   }
+
+  deleteQualification(id: number | undefined): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
