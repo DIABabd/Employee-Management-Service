@@ -37,19 +37,31 @@
 
     <div class="qualifications-section">
       <h3>Qualifications</h3>
-      <div class="qualification-item" *ngFor="let qual of skillSet">
-        {{ qual.skill }}
-        <button type="button" class="remove-btn" (click)="removeQualification(qual.id!)">×</button>
+
+      <!-- Display existing qualifications as tags -->
+      <div class="qualifications-tags">
+        <div class="qualification-tag" *ngFor="let qual of skillSet">
+          <span>{{ qual.skill }}</span>
+          <button type="button" class="remove-btn" (click)="removeQualification(qual.id!)">×</button>
+        </div>
+        <div *ngIf="skillSet.length === 0" class="no-qualifications">
+          No qualifications assigned. Add some below.
+        </div>
       </div>
 
-      <div class="add-qualification">
-        <select [(ngModel)]="selectedQualification" [ngModelOptions]="{standalone: true}">
-          <option [value]="null">Select Qualification</option>
-          <option *ngFor="let q of qualifications" [value]="q.id">{{ q.skill }}</option>
-        </select>
-        <button type="button" (click)="assignQualification()">Add</button>
+      <!-- Improved add qualification section -->
+      <div class="add-qualification-section">
+        <h4>Add a Qualification</h4>
+        <div class="add-qualification-form">
+          <select [(ngModel)]="selectedQualification" [ngModelOptions]="{standalone: true}" class="qualification-select">
+            <option [ngValue]="null">-- Select a qualification --</option>
+            <option *ngFor="let q of qualifications" [ngValue]="q.id">{{ q.skill }}</option>
+          </select>
+          <button type="button" class="add-qualification-btn" (click)="assignQualification()" [disabled]="!selectedQualification">
+            Add Qualification
+          </button>
+        </div>
       </div>
-
     </div>
 
     <div class="form-actions">

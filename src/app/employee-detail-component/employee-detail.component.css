@@ -1,130 +1,194 @@
 .employee-detail-container {
   max-width: 800px;
-  margin: 20px auto;
-  padding: 25px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 0 auto;
+  padding: 20px;
 }
 
 h2 {
-  color: #2c3e50;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-label {
+.form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-weight: 500;
-  color: #34495e;
 }
 
-input {
+.form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #bdc3c7;
+  padding: 8px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 16px;
 }
 
 .error {
-  color: #e74c3c;
-  font-size: 0.875rem;
+  color: #f44336;
+  font-size: 0.8rem;
   margin-top: 5px;
 }
 
+/* Qualification section styling */
 .qualifications-section {
   margin-top: 30px;
+  background-color: #f9f9f9;
   padding: 20px;
-  background: #f8f9fa;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
-.qualification-item {
+.qualifications-section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Qualifications displayed as tags */
+.qualifications-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.qualification-tag {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin: 5px 0;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background-color: #e0f2f1;
+  border: 1px solid #b2dfdb;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
 }
 
-.remove-btn {
+.qualification-tag span {
+  margin-right: 8px;
+}
+
+.qualification-tag .remove-btn {
   background: none;
   border: none;
-  color: #e74c3c;
+  color: #f44336;
   cursor: pointer;
-  font-size: 1.2rem;
-  padding: 0 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
-.add-qualification {
+.qualification-tag .remove-btn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.no-qualifications {
+  color: #757575;
+  font-style: italic;
+}
+
+/* Add qualification section */
+.add-qualification-section {
   margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+.add-qualification-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.add-qualification-form {
   display: flex;
   gap: 10px;
 }
 
-select {
+.qualification-select {
   flex: 1;
   padding: 8px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  border: 1px solid #bdc3c7;
 }
 
-.form-actions {
-  margin-top: 30px;
-  display: flex;
-  gap: 15px;
-  justify-content: flex-end;
-}
-
-button {
-  padding: 10px 20px;
+.add-qualification-btn {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.3s;
 }
 
-.save-btn {
-  background-color: #3498db;
-  color: white;
+.add-qualification-btn:hover {
+  background-color: #43a047;
 }
 
-.delete-btn {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.cancel-btn {
-  background-color: #95a5a6;
-  color: white;
-}
-
-button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-button:disabled {
-  opacity: 0.6;
+.add-qualification-btn:disabled {
+  background-color: #9e9e9e;
   cursor: not-allowed;
 }
 
-.add-qualification {
+/* Form action buttons */
+.form-actions {
+  margin-top: 30px;
   display: flex;
   gap: 10px;
-  margin-top: 15px;
 }
 
-.add-qualification button {
-  background-color: #27ae60;
+.cancel-btn {
+  padding: 8px 16px;
+  background-color: #9e9e9e;
   color: white;
-  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-btn {
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.cancel-btn:hover {
+  background-color: #757575;
+}
+
+.save-btn:hover {
+  background-color: #1976d2;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
