@@ -1,21 +1,27 @@
 .list-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   margin-bottom: 20px;
 }
 
 .new-employee-btn {
-  background-color: #27ae60;
+  background-color: #3498db;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 6px 10px;
   border-radius: 4px;
   cursor: pointer;
+  margin-left: 10px;
+  margin-top :-2px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: #f6f6f6
 }
 
 th, td {

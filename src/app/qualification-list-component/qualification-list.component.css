@@ -23,7 +23,7 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .add-button:hover {
@@ -45,14 +45,15 @@ th, td {
   border-bottom: 1px solid #ecf0f1;
 }
 
+tr:nth-child(even) {
+  background-color: #f6f6f6
+}
+
 th {
   background-color: #3498db;
   color: white;
 }
 
-tr:hover {
-  background-color: #f8f9fa;
-}
 
 .edit-btn {
   background-color: #f1c40f;
